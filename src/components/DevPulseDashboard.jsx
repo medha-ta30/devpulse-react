@@ -91,6 +91,7 @@ function buildPanelData(users, posts, todos, trivia, countries, errors) {
 function DevPulseDashboard() {
   const [activeTab, setActiveTab] = useState('Overview');
   const [loading, setLoading] = useState(true);
+  const [loadTime, setLoadTime] = useState(null);
 
   const [errors, setErrors] = useState({
     users: null,
@@ -106,16 +107,11 @@ function DevPulseDashboard() {
   const [trivia, setTrivia] = useState(null);
   const [countries, setCountries] = useState(null);
 
-  const setters = [
-    setUsers,
-    setPosts,
-    setTodos,
-    setTrivia,
-    setCountries,
-  ];
+  const setters = [setUsers, setPosts, setTodos, setTrivia, setCountries];
 
   async function fetchAllData() {
     setLoading(true);
+    const startTime = Date.now();
 
     const results = await Promise.allSettled([
       fetchUsers(),
@@ -135,18 +131,15 @@ function DevPulseDashboard() {
 
     for (let i = 0; i < results.length; i++) {
       const key = DATA_KEYS[i];
-
       if (results[i].status === 'fulfilled') {
         setters[i](results[i].value);
       } else {
-        const message =
-          results[i].reason?.message || 'Request failed';
-
-        nextErrors[key] = message;
+        nextErrors[key] = results[i].reason?.message || 'Request failed';
       }
     }
 
     setErrors(nextErrors);
+    setLoadTime(Date.now() - startTime);
     setLoading(false);
   }
 
@@ -154,69 +147,23 @@ function DevPulseDashboard() {
     fetchAllData();
   }, []);
 
-  const panelData = buildPanelData(
-    users,
-    posts,
-    todos,
-    trivia,
-    countries,
-    errors,
-  );
+  const panelData = buildPanelData(users, posts, todos, trivia, countries, errors);
 
   const errorList = [];
-
   for (let i = 0; i < DATA_KEYS.length; i++) {
     const key = DATA_KEYS[i];
-
     if (errors[key]) {
-      errorList.push({
-        key,
-        message: errors[key],
-      });
+      errorList.push({ key, message: errors[key] });
     }
   }
 
   function renderActivePanel() {
-    if (activeTab === 'Overview') {
-      return <OverviewPanel data={panelData.overviewData} />;
-    }
-
-    if (activeTab === 'Users') {
-      return <UsersPanel users={users} />;
-    }
-
-    if (activeTab === 'Posts') {
-      return (
-        <PostsPanel
-          processedPostsData={panelData.processedPostsData}
-        />
-      );
-    }
-
-    if (activeTab === 'Productivity') {
-      return (
-        <ProductivityPanel
-          productivityData={panelData.productivityData}
-        />
-      );
-    }
-
-    if (activeTab === 'Trivia') {
-      return (
-        <TriviaPanel
-          triviaData={panelData.triviaData}
-        />
-      );
-    }
-
-    if (activeTab === 'Countries') {
-      return (
-        <CountriesPanel
-          countriesData={panelData.countriesData}
-        />
-      );
-    }
-
+    if (activeTab === 'Overview') return <OverviewPanel data={panelData.overviewData} />;
+    if (activeTab === 'Users') return <UsersPanel users={users} />;
+    if (activeTab === 'Posts') return <PostsPanel processedPostsData={panelData.processedPostsData} />;
+    if (activeTab === 'Productivity') return <ProductivityPanel productivityData={panelData.productivityData} />;
+    if (activeTab === 'Trivia') return <TriviaPanel triviaData={panelData.triviaData} />;
+    if (activeTab === 'Countries') return <CountriesPanel countriesData={panelData.countriesData} />;
     return null;
   }
 
@@ -224,7 +171,6 @@ function DevPulseDashboard() {
     <div className="devpulse-dashboard">
       <header className="devpulse-header">
         <h1>DevPulse Dashboard</h1>
-
         <button
           type="button"
           className="devpulse-refresh-btn"
@@ -236,20 +182,16 @@ function DevPulseDashboard() {
       </header>
 
       {loading && (
-        <p className="devpulse-loading">
-          Loading dashboard data...
-        </p>
+        <p className="devpulse-loading">Loading dashboard data...</p>
       )}
 
       {!loading && errorList.length > 0 && (
         <div className="devpulse-errors">
           <h3>Some data could not be loaded</h3>
-
           <ul>
             {errorList.map((item) => (
               <li key={item.key}>
-                <strong>{item.key}:</strong>{' '}
-                {item.message}
+                <strong>{item.key}:</strong> {item.message}
               </li>
             ))}
           </ul>
@@ -261,11 +203,7 @@ function DevPulseDashboard() {
           <button
             key={tab}
             type="button"
-            className={
-              activeTab === tab
-                ? 'devpulse-tab-btn active'
-                : 'devpulse-tab-btn'
-            }
+            className={activeTab === tab ? 'devpulse-tab-btn active' : 'devpulse-tab-btn'}
             onClick={() => setActiveTab(tab)}
           >
             {tab}
@@ -277,6 +215,12 @@ function DevPulseDashboard() {
         <div className="devpulse-panel-content">
           {renderActivePanel()}
         </div>
+      )}
+
+      {loadTime && (
+        <footer style={{ marginTop: '24px', textAlign: 'center', fontSize: '12px', color: '#888', padding: '16px', borderTop: '1px solid var(--dp-border)' }}>
+          Dashboard loaded in {loadTime}ms
+        </footer>
       )}
     </div>
   );
