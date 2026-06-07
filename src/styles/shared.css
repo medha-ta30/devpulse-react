@@ -1,0 +1,191 @@
+/**
+ * Shared styles – design tokens, StatCard, Badge, grids, chart containers
+ */
+
+ :root {
+    --dp-bg: #f4f6f9;
+    --dp-surface: #ffffff;
+    --dp-text: #5c6578;
+    --dp-text-heading: #1a2332;
+    --dp-border: #e2e8f0;
+    --dp-accent: #2563eb;
+    --dp-accent-hover: #1d4ed8;
+    --dp-accent-soft: rgba(37, 99, 235, 0.1);
+    --dp-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    --dp-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.08);
+    --dp-radius: 10px;
+    --dp-radius-sm: 6px;
+    --dp-font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --dp-success: #16a34a;
+    --dp-warning: #ca8a04;
+    --dp-danger: #dc2626;
+  }
+  
+  /* Base card used across dashboard and panels */
+  .panel-card {
+    background: var(--dp-surface);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius);
+    box-shadow: var(--dp-shadow);
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .panel-card:hover {
+    box-shadow: var(--dp-shadow-md);
+  }
+  
+  /* Chart wrapper – consistent size and padding */
+  .chart-container {
+    width: 100%;
+    background: var(--dp-surface);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius);
+    box-shadow: var(--dp-shadow);
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  
+  .chart-container--sm {
+    height: 320px;
+  }
+  
+  .chart-container--md {
+    height: 360px;
+  }
+  
+  .chart-container--lg {
+    height: 420px;
+  }
+  
+  .chart-container--xl {
+    height: 340px;
+  }
+  
+  /* Panel section title */
+  .panel-title {
+    margin: 0 0 16px;
+    font-family: var(--dp-font);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--dp-text-heading);
+    text-align: left;
+  }
+  
+  /* Empty / placeholder text */
+  .panel-empty {
+    margin: 0;
+    padding: 24px;
+    text-align: center;
+    color: var(--dp-text);
+    font-size: 0.875rem;
+    background: var(--dp-surface);
+    border: 1px dashed var(--dp-border);
+    border-radius: var(--dp-radius);
+  }
+  
+  /* Responsive grid helpers */
+  .responsive-grid {
+    display: grid;
+    gap: 16px;
+  }
+  
+  .responsive-grid--stats {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .responsive-grid--cards {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+  
+  .responsive-grid--countries {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  
+  /* StatCard */
+  .stat-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px;
+    background: var(--dp-surface);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius);
+    box-shadow: var(--dp-shadow);
+    text-align: left;
+  }
+  
+  .stat-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+    background: var(--dp-accent-soft);
+    border-radius: var(--dp-radius-sm);
+    flex-shrink: 0;
+  }
+  
+  .stat-card-title {
+    margin: 0 0 4px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--dp-text);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  
+  .stat-card-value {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--dp-text-heading);
+    line-height: 1.2;
+  }
+  
+  /* Badge */
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 999px;
+    background: var(--dp-accent-soft);
+    color: var(--dp-accent);
+    border: 1px solid rgba(37, 99, 235, 0.25);
+  }
+  
+  .badge-default {
+    background: var(--dp-bg);
+    color: var(--dp-text-heading);
+    border-color: var(--dp-border);
+  }
+  
+  .badge-success {
+    background: rgba(22, 163, 74, 0.12);
+    color: var(--dp-success);
+    border-color: rgba(22, 163, 74, 0.35);
+  }
+  
+  .badge-warning {
+    background: rgba(202, 138, 4, 0.12);
+    color: var(--dp-warning);
+    border-color: rgba(202, 138, 4, 0.35);
+  }
+  
+  .badge-danger {
+    background: rgba(220, 38, 38, 0.12);
+    color: var(--dp-danger);
+    border-color: rgba(220, 38, 38, 0.35);
+  }
+  
+  /* SectionTitle */
+  .section-title {
+    margin: 0 0 16px;
+    font-family: var(--dp-font);
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--dp-text-heading);
+    text-align: left;
+  }

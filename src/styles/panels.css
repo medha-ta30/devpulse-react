@@ -1,0 +1,412 @@
+/**
+ * Panel styles – Overview, Users, Posts, Productivity, Trivia, Countries
+ */
+
+/* Overview */
+.overview-panel {
+    margin: 0;
+  }
+  
+  .overview-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  
+  .overview-empty {
+    margin: 0;
+    padding: 24px;
+    text-align: center;
+    color: var(--dp-text);
+    font-size: 0.875rem;
+  }
+  
+  /* Users */
+  .users-panel {
+    margin: 0;
+  }
+  
+  .users-section-title {
+    margin: 0 0 16px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--dp-text-heading);
+    text-align: left;
+  }
+  
+  .users-section-title:not(:first-child) {
+    margin-top: 28px;
+  }
+  
+  .users-no-business {
+    margin: 0 0 8px;
+    padding: 14px 16px;
+    font-size: 0.875rem;
+    color: var(--dp-text);
+    background: var(--dp-bg);
+    border: 1px dashed var(--dp-border);
+    border-radius: var(--dp-radius);
+    text-align: left;
+  }
+  
+  .users-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .user-card {
+    padding: 18px;
+    background: var(--dp-bg);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius);
+    text-align: left;
+    transition: box-shadow 0.2s ease;
+  }
+  
+  /* Business accounts – light green highlight */
+  .user-card--business {
+    background: rgba(22, 163, 74, 0.08);
+    border: 2px solid #16a34a;
+  }
+  
+  .user-card--business .badge {
+    margin-bottom: 10px;
+  }
+  
+  .user-card:hover {
+    box-shadow: var(--dp-shadow-md);
+  }
+  
+  .user-card-name {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dp-text-heading);
+  }
+  
+  .user-card-email {
+    margin: 0 0 8px;
+    font-size: 0.875rem;
+    color: var(--dp-text);
+    word-break: break-word;
+  }
+  
+  .user-card-company {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--dp-accent);
+    font-weight: 500;
+  }
+  
+  .users-empty {
+    margin: 0;
+    padding: 24px;
+    text-align: center;
+    color: var(--dp-text);
+    font-size: 0.875rem;
+  }
+  
+  /* Posts */
+  .posts-panel {
+    margin: 0;
+  }
+  
+  .posts-panel-title {
+    margin: 0 0 16px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--dp-text-heading);
+  }
+  
+  .posts-chart-wrap {
+    width: 100%;
+    height: 320px;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: var(--dp-bg);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius);
+    box-sizing: border-box;
+  }
+  
+  .posts-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .posts-list-item {
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    background: var(--dp-bg);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius-sm);
+    font-size: 0.875rem;
+    color: var(--dp-text-heading);
+  }
+  
+  .posts-list-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .posts-empty {
+    margin: 0;
+    padding: 24px;
+    text-align: center;
+    color: var(--dp-text);
+    font-size: 0.875rem;
+  }
+  
+  /* Productivity */
+  .productivity-panel {
+    margin: 0;
+  }
+  
+  .productivity-panel-title {
+    margin: 0 0 16px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--dp-text-heading);
+  }
+  
+  .productivity-chart-wrap {
+    width: 100%;
+    height: 420px;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: var(--dp-bg);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius);
+    box-sizing: border-box;
+  }
+  
+  .productivity-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+    font-size: 0.8125rem;
+  }
+  
+  .productivity-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--dp-text);
+  }
+  
+  .productivity-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+  }
+  
+  .productivity-legend-dot.green {
+    background: var(--dp-success);
+  }
+  
+  .productivity-legend-dot.yellow {
+    background: var(--dp-warning);
+  }
+  
+  .productivity-legend-dot.red {
+    background: var(--dp-danger);
+  }
+  
+  .productivity-empty {
+    margin: 0;
+    padding: 24px;
+    text-align: center;
+    color: var(--dp-text);
+    font-size: 0.875rem;
+  }
+  
+  /* Trivia */
+  .trivia-panel {
+    margin: 0;
+  }
+  
+  .trivia-panel-title {
+    margin: 0 0 16px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--dp-text-heading);
+  }
+  
+  .trivia-chart-wrap {
+    width: 100%;
+    height: 320px;
+    margin-bottom: 28px;
+    padding: 16px;
+    background: var(--dp-bg);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius);
+    box-sizing: border-box;
+  }
+  
+  .trivia-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  
+  .trivia-question-card {
+    padding: 16px;
+    background: var(--dp-bg);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius);
+    text-align: left;
+  }
+  
+  .trivia-card-row {
+    margin: 0 0 10px;
+    font-size: 0.875rem;
+    color: var(--dp-text-heading);
+    line-height: 1.45;
+    word-break: break-word;
+  }
+  
+  .trivia-card-row:last-child {
+    margin-bottom: 0;
+  }
+  
+  .trivia-error-card {
+    padding: 20px;
+    border: 1px solid rgba(220, 38, 38, 0.35);
+    border-radius: var(--dp-radius);
+    background: rgba(220, 38, 38, 0.06);
+    text-align: left;
+  }
+  
+  .trivia-error-title {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dp-danger);
+  }
+  
+  .trivia-error-message {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--dp-text);
+  }
+  
+  .trivia-empty {
+    margin: 0;
+    padding: 24px;
+    text-align: center;
+    color: var(--dp-text);
+    font-size: 0.875rem;
+  }
+  
+  /* Countries */
+  .countries-panel {
+    margin: 0;
+  }
+  
+  .countries-panel-title {
+    margin: 0 0 12px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--dp-text-heading);
+  }
+  
+  .countries-search {
+    width: 100%;
+    max-width: 420px;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    font-size: 0.875rem;
+    font-family: var(--dp-font);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius-sm);
+    background: var(--dp-surface);
+    color: var(--dp-text-heading);
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  
+  .countries-search:focus {
+    outline: none;
+    border-color: var(--dp-accent);
+    box-shadow: 0 0 0 3px var(--dp-accent-soft);
+  }
+  
+  .countries-chart-wrap {
+    width: 100%;
+    height: 340px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: var(--dp-bg);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius);
+    box-sizing: border-box;
+  }
+  
+  .countries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  
+  .country-card {
+    padding: 16px;
+    background: var(--dp-bg);
+    border: 1px solid var(--dp-border);
+    border-radius: var(--dp-radius);
+    text-align: left;
+    transition: box-shadow 0.2s ease;
+  }
+  
+  .country-card:hover {
+    box-shadow: var(--dp-shadow-md);
+  }
+  
+  .country-card-flag {
+    display: block;
+    width: 48px;
+    height: auto;
+    margin-bottom: 10px;
+    border: 1px solid var(--dp-border);
+    border-radius: 4px;
+  }
+  
+  .country-card-name {
+    margin: 0 0 8px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--dp-text-heading);
+  }
+  
+  .country-card-detail {
+    margin: 0 0 4px;
+    font-size: 0.8125rem;
+    color: var(--dp-text);
+  }
+  
+  .countries-empty,
+  .countries-no-results {
+    margin: 0;
+    padding: 24px;
+    font-size: 0.875rem;
+    color: var(--dp-text);
+    text-align: center;
+  }
+  
+  @media (max-width: 640px) {
+    .overview-stats-grid,
+    .users-grid,
+    .countries-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .posts-chart-wrap,
+    .productivity-chart-wrap,
+    .trivia-chart-wrap,
+    .countries-chart-wrap {
+      height: 280px;
+      padding: 12px;
+    }
+  }
