@@ -10,7 +10,7 @@
  * Does NOT render charts/lists directly – panels handle UI.
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import { fetchUsers } from '../api/fetchUsers';
 import { fetchPosts } from '../api/fetchPosts';
